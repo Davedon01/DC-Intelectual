@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import GiscusComments from "@/app/Components/GiscusComments";
 
 export default async function ArticlePage({
   params,
@@ -31,7 +32,13 @@ export default async function ArticlePage({
         <MDXRemote source={source} />
 
       </div>
+       
+        <div className="mt-4">
+            <GiscusComments />``
+        </div>
 
     </article>
+
+    
   );
 }
