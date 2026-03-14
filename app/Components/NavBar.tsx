@@ -32,6 +32,7 @@ export default function Navbar() {
               width={40}
               height={40}
               priority
+              className="border border-blue-800"
             />
           </Link>
 

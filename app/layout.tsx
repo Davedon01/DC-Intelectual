@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
 
-      <body className="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased transition-colors duration-300">
+      <body className="bg-white text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 antialiased transition-colors duration-300">
         <ThemeProvider>
           <div className="min-h-screen select-none">
 

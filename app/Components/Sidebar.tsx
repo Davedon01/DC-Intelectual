@@ -19,7 +19,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="h-full p-6 flex flex-col justify-between bg-white dark:bg-neutral-950 border-r border-neutral-200 dark:border-neutral-800">
+    <div className="h-full p-6 flex flex-col justify-between bg-white dark:bg-gray-500/10 border-r border-neutral-200 dark:border-neutral-800">
       {/* Top: Logo & Links */}
       <div>
         <Image
@@ -31,7 +31,7 @@ export default function Sidebar() {
           className=""
         />
 
-        <nav className="space-y-6 text-sm mb-5 text-neutral-900 dark:text-neutral-100">
+        <nav className="space-y-6 text-sm mb-5 text-neutral-900 dark:text-gray-100">
           {links.map((link) => {
             const isActive = pathname === link.href;
 
@@ -41,8 +41,8 @@ export default function Sidebar() {
                 href={link.href}
                 className={`block transition-colors duration-200 ${
                   isActive
-                    ? "font-medium text-ink dark:text-white"
-                    : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+                    ? "font-medium text-ink text-blue-400   "
+                    : "dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-gray-400"
                 }`}
               >
                 {link.name}
@@ -53,8 +53,8 @@ export default function Sidebar() {
       </div>
 
       {/* Bottom: Theme Switch */}
-      <div className="pt-6 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
-        <span className="text-sm text-neutral-500 dark:text-neutral-400">
+      <div className="pt-6 border-t border-neutral-300 dark:border-neutral-400 flex items-center justify-between">
+        <span className="text-sm text-neutral-600 dark:text-neutral-200">
           Theme
         </span>
         <ThemeSwitch />
