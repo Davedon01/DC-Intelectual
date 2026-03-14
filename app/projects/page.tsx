@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
+import Img from "@/public/Project-page-DC-Intelectual.webp"
 
 interface Project {
   title: string;
@@ -52,45 +53,47 @@ export default function ProjectsPage() {
   }
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
-      {/* Page Title */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-serif mb-4">
-          Intellectual Projects
-        </h1>
+    <main className="relative min-h-screen">
+      {/* Fixed Background Layer */}
+      <div 
+        className="fixed inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: `url(${Img.src})` }}
+      />
+      <div className="fixed inset-0 -z-10 bg-white/80 dark:bg-black/80 backdrop-blur-xs" />
 
-        <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-          A growing archive of independent intellectual work, research, and
-          structured explorations across psychology, systems thinking,
-          behavioral analysis, and interdisciplinary study.
-        </p>
-      </div>
+      <section className="max-w-3xl mx-auto px-6 py-20 relative z-0">
+        {/* Header */}
+        <div className="mb-20">
+          <h1 className="text-4xl md:text-5xl font-serif mb-6 text-neutral-900 dark:text-white">
+            Intellectual Projects
+          </h1>
+          <p className="text-lg text-neutral-600 dark:text-neutral-400">
+            A curated archive of research, behavioral frameworks, and independent intellectual work.
+          </p>
+        </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projects.map((project) => (
-          <Link key={project.slug} href={`/projects/${project.slug}`}>
-            <article className="group relative cursor-pointer">
-              {/* Book Cover */}
-              <div className="aspect-3/2 p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 flex flex-col justify-between">
-                <div>
-                  <h2 className="font-serif text-xl mb-3 leading-snug group-hover:text-neutral-900 dark:group-hover:text-white transition">
+        {/* Article-style List */}
+        <div className="space-y-12">
+          {projects.map((project) => (
+            <article key={project.slug} className="group">
+              <Link href={`/projects/${project.slug}`} className="block">
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-2xl font-serif text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h2>
-
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                     {project.description}
                   </p>
+                  <span className="text-sm text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-neutral-200 transition-colors">
+                    Load project →
+                  </span>
                 </div>
-
-                <span className="text-xs text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition mt-6">
-                  Open project →
-                </span>
-              </div>
+              </Link>
+              <div className="mt-8 border-b border-neutral-200 dark:border-neutral-800" />
             </article>
-          </Link>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

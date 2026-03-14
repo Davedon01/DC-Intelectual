@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
+import img from "@/public/Article-page-DC-Intelectual.webp";
 
 interface Article {
   slug: string;
@@ -49,43 +50,70 @@ export default function ArticlesPage() {
   }
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-20">
+    <main className="relative min-h-screen">
+      {/* Fixed Background Layer */}
+      <div
+        className="fixed inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: `url(${img.src})` }}
+      />
+      {/* Overlay for readability */}
+      <div className="fixed inset-0 -z-10 bg-white/90 dark:bg-black/80 backdrop-blur-xs" />
 
-      <div className="mb-16">
-        <h1 className="text-4xl font-serif mb-4">
-          Articles
-        </h1>
+      <section className="max-w-3xl mx-auto px-6 py-20 relative z-0">
+        <div className="mb-16">
+          <h1 className="text-4xl font-serif mb-4 text-neutral-900 dark:text-white">
+            Articles
+          </h1>
+          <p className="text-neutral-600 dark:text-neutral-400">
+            Short essays, reflections, and intellectual explorations.
+          </p>
+        </div>
 
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Short essays, reflections, and intellectual explorations.
-        </p>
-      </div>
+        <div className="space-y-12">
+          {articles.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/articles/${article.slug}`}
+              className="block group"
+            >
+              <article className="border-b border-neutral-200 dark:border-neutral-800 pb-10 transition-colors">
+                {/* Date */}
+                <span className="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-500 mb-2 block">
+                  {article.date}
+                </span>
 
-      <div className="space-y-10">
+                {/* Title */}
+                <h2 className="text-2xl font-serif mb-3 text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {article.title}
+                </h2>
 
-        {articles.map((article) => (
-          <Link key={article.slug} href={`/articles/${article.slug}`}>
+                {/* Description */}
+                <p className="text-neutral-700 dark:text-neutral-400 mb-6 leading-relaxed max-w-2xl">
+                  {article.description}
+                </p>
 
-            <article className="border-b pb-8 cursor-pointer group">
-
-              <h2 className="text-2xl font-serif mb-2 group-hover:underline">
-                {article.title}
-              </h2>
-
-              <p className="text-neutral-600 dark:text-neutral-400 mb-2">
-                {article.description}
-              </p>
-
-              <span className="text-sm text-neutral-500">
-                {article.date}
-              </span>
-
-            </article>
-
-          </Link>
-        ))}
-
-      </div>
-    </section>
+                {/* "Read Article" Button */}
+                <div className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 border border-blue-600/20 dark:border-blue-400/20 px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-all">
+                  Read Article
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </div>
+              </article>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

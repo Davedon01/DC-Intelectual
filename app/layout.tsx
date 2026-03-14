@@ -3,6 +3,8 @@ import { ReactNode } from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./Components/NavBar";
 import Sidebar from "./Components/Sidebar";
+import Footer from "./Components/Footer";
+import Img from "@/public/DC_Intelectual_footer.webp"
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -48,6 +50,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 {children}
               </main>
 
+            </div>
+            {/* Footer  */}
+            <div>
+              <Footer />
             </div>
           </div>
         </ThemeProvider>

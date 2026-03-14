@@ -68,6 +68,16 @@ img {
   animation: floatReverse 14s ease-in-out infinite;
 }
 
+
+
+/* Fixed BG on Pages */
+/* If bg-fixed acts up on mobile */
+.bg-fixed {
+  background-attachment: fixed;
+  -webkit-overflow-scrolling: touch;
+}
+
+
 /*Hero image blending */
 /* .image-blend {
   -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
