@@ -14,12 +14,12 @@ export default function ProjectDocumentation() {
 
     <div className="grid md:grid-cols-2 gap-16 text-neutral-700 dark:text-neutral-300 leading-relaxed">
       <div className="space-y-6 text-lg">
-        <p>This platform is a curated documentation of my personal intellectual projects — developed through research, coursework, structured analysis, and independent study.</p>
+        <p>This platform is a curated documentation of my personal intellectual projects, developed through research, coursework, structured analysis, and independent study.</p>
         <p>It is not confined to a single discipline. Projects may emerge from psychology, sociology, philosophy, technology, systems theory, or interdisciplinary exploration.</p>
       </div>
 
       <div className="space-y-6 text-lg">
-        <p>The purpose of this archive is to present ideas with clarity, structure, and intellectual discipline — allowing readers to examine concepts in depth rather than consume them superficially.</p>
+        <p>The purpose of this archive is to present ideas with clarity, structure, and intellectual discipline, allowing readers to examine concepts in depth rather than consume them superficially.</p>
         <p className="text-black dark:text-white font-medium">This is a study environment. A living documentation. A growing intellectual repository.</p>
       </div>
     </div>

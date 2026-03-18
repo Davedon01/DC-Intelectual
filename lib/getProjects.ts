@@ -2,25 +2,28 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const projectsDirectory = path.join(process.cwd(), "content/projects"); // adjust to your path
+export async function getProjects() {
+  const projectsDirectory = path.join(process.cwd(), "content/projects");
+  
+  // 1. Get all file names in the folder
+  const filenames = fs.readdirSync(projectsDirectory);
 
-export function getProjects() {
-  const fileNames = fs.readdirSync(projectsDirectory);
+  const allProjects = filenames.map((filename) => {
+    const filePath = path.join(projectsDirectory, filename);
+    const fileContent = fs.readFileSync(filePath, "utf8");
 
-  return fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, "");
-    const fullPath = path.join(projectsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    // 2. Use gray-matter to parse the metadata (frontmatter)
+    const { data } = matter(fileContent);
 
-    // Parse the metadata section of the MDX
-    const { data } = matter(fileContents);
-
+    // 3. Return a clean object for the Tracks component
     return {
-      slug,
-      title: data.title || "Untitled Project",
-      description: data.description || "No description available.",
-      category: data.category || "Uncategorized",
+      slug: filename.replace(".mdx", ""),
+      title: data.title || "Untitled Project", // Pulls from MDX 'title'
+      description: data.description || "",      // Pulls from MDX 'description'
+      category: data.category || "Research",
       tags: data.tags || [],
     };
   });
+
+  return allProjects;
 }
